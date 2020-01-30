@@ -1,0 +1,119 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans",
+  sans-serif;
+  font-size: 20px;
+  color: #444;
+  text-align: center;
+  line-height: 1.5;
+}
+
+nav {
+  padding: 1% 0;
+  background-color: #aaa;
+  height: 70px;
+}
+
+footer {
+  padding: 1% 0;
+}
+
+.nav-header {
+  background-color: #aaa;
+  display: flex;
+  justify-content: space-between;
+  margin: 0px auto;
+  width: 90%;
+  height: 100%;
+}
+
+.nav-logo {
+  width: 15%;
+}
+
+#nav-logo {
+  height: 100%;
+}
+
+header {
+  padding: 45px 15px;
+}
+
+section {
+  min-height: 50px;
+  padding: 15px 15px;
+}
+
+p {
+  margin: 0 auto;
+  max-width: 650px;
+}
+
+p + p {
+  margin-top: 15px;
+}
+
+.login {
+  width: 500px;
+  min-height: 300px;
+  margin: 0px auto 200px auto;
+  padding: 10px;
+  background-color: #ddd;
+}
+
+.game-list {
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px auto;
+  padding: 0;
+}
+
+.game-card {
+  display: inline-block;
+  width: 33%;
+  height: 300px;
+  overflow: hidden;
+  margin: 2%;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+}
+
+.game-card-title {
+  width: 100%;
+  background-color: #bbb;
+  padding: 10px;
+}
+
+.game-card-title h4 {
+  margin: 0px;
+}
+
+.game-card-info {
+  padding: 10px;
+}
+
+.game-card-lg {
+  display: block;
+  width: 50%;
+  min-height: 300px;
+  margin: 20px auto;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+}
+
+.detail-label {
+  font-weight: bold;
+}
+.new-game-form {
+  text-align: center;
+}
+.new-game-form label, .new-game-form input, .new-game-form button {
+  display: block;
+  margin: 5px auto;
+  width: 30%;
+}
