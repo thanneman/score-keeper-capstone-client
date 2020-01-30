@@ -34,12 +34,13 @@ footer {
   width: 15%;
 }
 
-#nav-logo {
-  height: 100%;
+.nav-logo img {
+  width: 100%;
 }
 
 header {
   padding: 45px 15px;
+  width: 100%;
 }
 
 section {
@@ -62,6 +63,15 @@ p + p {
   margin: 0px auto 200px auto;
   padding: 10px;
   background-color: #ddd;
+}
+
+.login-logo {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.login-logo img {
+  width: 100%;
 }
 
 .game-list {
@@ -116,4 +126,81 @@ p + p {
   display: block;
   margin: 5px auto;
   width: 30%;
+}
+
+
+
+@media only screen and (max-width: 320px) {
+  .login {
+    width: 90%;
+  }
+
+  nav {
+    padding: 1% 0;
+    height: 50px;
+  }
+
+  .nav-logo {
+    width: 30%;
+    margin-top: 10px;
+  }
+  
+  .nav-logo {
+    width: 30%;
+  }
+
+  .game-list {
+    width: 95%;
+  }
+
+  .game-card {
+    display: inline-block;
+    width: 100%;
+    height: 300px;
+  }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 550px) {
+  .login {
+    width: 90%;
+  }
+
+  nav {
+    padding: 1% 0;
+    height: 50px;
+  }
+
+  .nav-logo {
+    width: 30%;
+    margin-top: 10px;
+  }
+
+  .game-list {
+    width: 95%;
+  }
+
+  .game-card {
+    display: inline-block;
+    width: 100%;
+    min-height: 300px;
+  }
+
+  .game-card-lg {
+    display: block;
+    width: 100%;
+    min-height: 300px;
+    margin: 20px auto;
+    border: 1px solid #bbb;
+    border-radius: 10px;
+  }
+
+  .new-game-form label, .new-game-form input, .new-game-form button {
+    display: block;
+    margin: 5px auto;
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 551px) and (max-width: 900px) {
+
 }

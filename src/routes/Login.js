@@ -8,7 +8,9 @@ export default class Login extends Component {
         return (
             <main role="main">
                 <header role="banner">
-                    <img id="nav-logo" src={logo} alt="DiscScore Logo" />
+                    <div className="login-logo">
+                        <img id="login-logo" src={logo} alt="DiscScore Logo" />
+                    </div>
                     <h3>Keep track and score your disc golf games, locations, and any notes about a course. </h3>
                 </header>
                 <div className="login">

@@ -4,8 +4,6 @@ import Login from './routes/Login'
 import Signup from './routes/Signup'
 import Dashboard from './routes/Dashboard'
 import NewGame from './routes/NewGame'
-//import GameDetail from './routes/GameDetail'
-//import dummyStore from './dummy-store'
 import './App.css'
 
 export default class App extends Component {
