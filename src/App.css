@@ -60,7 +60,7 @@ p + p {
 .login {
   width: 500px;
   min-height: 300px;
-  margin: 0px auto 200px auto;
+  margin: 0px auto 20px auto;
   padding: 10px;
   background-color: #ddd;
 }
