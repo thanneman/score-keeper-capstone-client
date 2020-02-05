@@ -1,4 +1,4 @@
 export default {
-    API_ENDPOINT: 'http://localhost:8000/api',
-    //TOKEN_KEY: 'thingful-client-auth-token',
+    API_ENDPOINT: 'https://powerful-mesa-51418.herokuapp.com/api',
+    TOKEN_KEY: 'discscore-client-auth-token',
   }
