@@ -39,7 +39,7 @@ export default class Signup extends Component {
     }
 
     updateRepeatPassword(repeatPassword) {
-        this.setState({ email: { value: repeatPassword, touched: true } });
+        this.setState({ repeatPassword: { value: repeatPassword, touched: true } });
     }
 
     handleLoginSuccess = user => {
@@ -74,7 +74,7 @@ export default class Signup extends Component {
         }
     }
 
-    validatePassword(fieldValue) {
+    validatePassword() {
         const password = this.state.password.value.trim();
         if (password.length === 0 ) {
             return 'Password is required';
@@ -108,19 +108,21 @@ export default class Signup extends Component {
                         <div>
                             <label htmlFor="email">Email</label>
                             <input type="text" name='email' id='email' onChange={e => this.updateEmail(e.target.value)} />
-                            {this.state.email.touched && (<ValidationError message={this.validateEmail()} />)}
                         </div>
                         <div>
                             <label htmlFor="password">Password</label>
                             <input type='password' name='password' id='password' onChange={e => this.updatePassword(e.target.value)} />
-                            {this.state.password.touched && (<ValidationError message={this.validatePassword()} />)}
                         </div>
                         <div>
                             <label htmlFor="repeat-password">Password</label>
                             <input type='password' name='repeatPassword' id='repeatPassword' onChange={e => this.updateRepeatPassword(e.target.value)} />
-                            {this.state.repeatPassword.touched && (<ValidationError message={this.validateRepeatPassword()} />)}
                         </div>
                         <button type='submit'>Sign up</button>
+                        <div className='error'>
+                            {this.state.email.touched && (<ValidationError message={this.validateEmail()} />)}
+                            {this.state.password.touched && (<ValidationError message={this.validatePassword()} />)}
+                            {this.state.repeatPassword.touched && (<ValidationError message={this.validateRepeatPassword()} />)}
+                        </div>
                     </form>
                     <div>
                         <p>Already have an account? Login <Link to="/">here</Link></p>

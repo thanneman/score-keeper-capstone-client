@@ -91,12 +91,16 @@ export default class Login extends Component {
                         <div>
                             <label htmlFor="email">Email</label>
                             <input type='text' name='email' id='email' onChange={e => this.updateEmail(e.target.value)} />
-                            {this.state.email.touched && (<ValidationError message={this.validateEmail()} />)}
                         </div>
                         <div>
                             <label htmlFor="password">Password</label>
                             <input type='password' name='password' id='password' onChange={e => this.updatePassword(e.target.value)} />
-                            {this.state.password.touched && (<ValidationError message={this.validatePassword()} />)}
+                        </div>
+                        <div className='error'>
+                            <p>
+                                {this.state.email.touched && (<ValidationError message={this.validateEmail()} />)}
+                                {this.state.password.touched && (<ValidationError message={this.validatePassword()} />)}
+                            </p>
                         </div>
                         <button type='submit'>Login</button>
                     </form>

@@ -74,6 +74,12 @@ p + p {
   width: 100%;
 }
 
+.error {
+  min-height: 20px;
+  font-size: 12px;
+  color: red;
+}
+
 .game-list {
   width: 90%;
   display: flex;

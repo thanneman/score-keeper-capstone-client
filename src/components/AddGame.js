@@ -16,8 +16,9 @@ export default class extends Component {
             course_par: e.target.course_par.value,
             front_score: e.target.front_score.value,
             back_score: e.target.back_score.value,
-            notes: e.target.notes.value,
+            notes: "I really want this to work"
         }
+        console.log(newGame)
         GameApiService.postUserGame(newGame.id, newGame.course_name, newGame.date, newGame.course_par, newGame.front_score, newGame.back_score, newGame.notes)
             .then(() => {
                 window.location = '/dashboard'
@@ -47,7 +48,7 @@ export default class extends Component {
                         <input type="text" name="back_score" id="back_score" />
 
                         <label>Notes:</label>
-                        <textarea rows="8" cols="40" name="notes" id="notes" />
+                        <input type="text" name="notes" id="notes" />
                         
                         <button type='submit'>Submit</button>
                     </form>

@@ -38,7 +38,7 @@ export default class NavBar extends Component {
         return (
             <>
                 {this.state.games.map(game => (
-                <div className="game-card" key={game.id}>
+                <div className="game-card" key={game.id} id={game.id}>
                     <div className="game-card-title">
                     <h4>{game.course_name}</h4>
                     </div>

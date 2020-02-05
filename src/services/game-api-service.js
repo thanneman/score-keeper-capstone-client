@@ -42,6 +42,7 @@ const GameApiService = {
       )
   },
   postGame(gameId, course_name, date, course_par, front_score, back_score, notes) {
+    console.log(course_name, notes)
     return fetch(`${config.API_ENDPOINT}/games`, {
       method: 'POST',
       headers: {
