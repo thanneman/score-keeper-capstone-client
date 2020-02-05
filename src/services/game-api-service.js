@@ -55,7 +55,7 @@ const GameApiService = {
         course_par,
         front_score,
         back_score,
-        notes
+        notes,
       }),
     })
       .then(res =>
@@ -78,7 +78,7 @@ const GameApiService = {
         course_par,
         front_score,
         back_score,
-        notes
+        notes,
       }),
     })
       .then(res =>

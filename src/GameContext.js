@@ -11,7 +11,7 @@ const GameContext = React.createContext({
     notes: '',
     addGame: () => {},
     deleteGame: () => {},
-    addUserUser: () => {},
+    addUser: () => {},
 })
 
 export default GameContext
