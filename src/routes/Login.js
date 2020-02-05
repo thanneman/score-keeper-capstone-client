@@ -31,7 +31,7 @@ export default class Login extends Component {
         this.setState({ email: { value: email, touched: true } });
     }
 
-    updateEmail(password) {
+    updatePassword(password) {
         this.setState({ password: { value: password, touched: true } });
     }
 
