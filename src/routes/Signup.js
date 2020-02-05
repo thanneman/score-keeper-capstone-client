@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ValidationError from './validation-error'
+import ValidationError from '../components/validation-error'
 import AuthApiService from '../services/auth-api-service'
 import { Link } from 'react-router-dom'
 import logo from '../images/logo.png'
@@ -39,11 +39,11 @@ export default class Signup extends Component {
     }
 
     updateRepeatPassword(repeatPassword) {
-        this.setState({ email: { value: password, touched: true } });
+        this.setState({ email: { value: repeatPassword, touched: true } });
     }
 
     handleLoginSuccess = user => {
-        window.location = '/login'
+        window.location = '/'
     }
 
     handleSubmitBasicAuth = ev => {
@@ -76,7 +76,7 @@ export default class Signup extends Component {
 
     validatePassword(fieldValue) {
         const password = this.state.password.value.trim();
-        if (email.length === 0 ) {
+        if (password.length === 0 ) {
             return 'Password is required';
         } else if (password.length < 6 || password.length > 20) {
             return 'Password must be between 6 and 20 characters long';

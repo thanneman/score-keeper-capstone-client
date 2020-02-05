@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
+import PrivateRoute from './components/utils/PrivateRoute'
+import PublicOnlyRoute from './components/utils/PublicOnlyRoute'
 import Login from './routes/Login'
 import Signup from './routes/Signup'
 import Dashboard from './routes/Dashboard'
@@ -14,9 +16,9 @@ export default class App extends Component {
         <div className="App">
             <Switch>
               <Route exact path={'/'} component={Login} />
-              <Route path={'/signup'} component={Signup} />
-              <Route path={'/dashboard'} component={Dashboard} />
-              <Route path={'/newgame'} component={NewGame} />
+              <PublicOnlyRoute path={'/signup'} component={Signup} />
+              <PrivateRoute path={'/dashboard'} component={Dashboard} />
+              <PrivateRoute path={'/newgame'} component={NewGame} />
             </Switch>
         </div>
       )
