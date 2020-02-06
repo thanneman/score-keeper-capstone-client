@@ -16,7 +16,7 @@ export default class AddGame extends Component {
             course_par: e.target.course_par.value,
             front_score: e.target.front_score.value,
             back_score: e.target.back_score.value,
-            notes: "I really want this to work"
+            notes: e.target.notes.value,
         }
         GameApiService.postUserGame(newGame.id, newGame.course_name, newGame.date, newGame.course_par, newGame.front_score, newGame.back_score, newGame.notes)
             .then(() => {

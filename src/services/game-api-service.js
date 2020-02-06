@@ -96,18 +96,7 @@ const GameApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
-      .then(res => {
-        if (!res.ok) {
-          return res.json().then(error => Promise.reject(error))
-        }
-        return res.json()
-      })
-      .then(data => {
-        cb(gameId)
-      })
-      .catch(error => {
-        console.error(error)
-      })
+      
   },
   deleteUserGame(gameId, cb) {
     fetch(`${config.API_ENDPOINT}/users/${TokenService.getUserId('userId')}/games/${gameId}`, {
@@ -115,17 +104,17 @@ const GameApiService = {
       headers: {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`,
-      },
-    })
-    .then(res => {
-      if (!res.ok) {
-        return res.json().then(error => Promise.reject(error))
       }
-      return res.json()
     })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(error => {
+            throw error
+          })
+        }
+      })
       .then(data => {
         cb(gameId)
-        window.location.reload()
       })
       .catch(error => {
         console.error(error)
