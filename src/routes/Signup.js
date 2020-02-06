@@ -118,7 +118,7 @@ export default class Signup extends Component {
                             <input type='password' name='repeatPassword' id='repeatPassword' onChange={e => this.updateRepeatPassword(e.target.value)} />
                         </div>
                         <button type='submit'>Sign up</button>
-                        <div className='error'>
+                        <div>
                             {this.state.email.touched && (<ValidationError message={this.validateEmail()} />)}
                             {this.state.password.touched && (<ValidationError message={this.validatePassword()} />)}
                             {this.state.repeatPassword.touched && (<ValidationError message={this.validateRepeatPassword()} />)}

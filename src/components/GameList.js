@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import GameContext from '../GameContext'
 import Game from '../components/Game'
-import RecordApiService from '../services/game-api-service'
-//import dummyStore from '../dummy-store'
+//import GameApiService from '../services/game-api-service'
 
-export default class Dashboard extends Component {
+export default class GameList extends Component {
     state = {
         games: [],
         id: '',
@@ -50,20 +49,20 @@ export default class Dashboard extends Component {
         })
     }
 
+    /*
     componentDidMount() {
-        RecordApiService.getUserGames()
-            .then(resJson =>
-                this.setState({
-                    id: resJson.id,
-                    course_name: resJson.course_name,
-                    date: resJson.date,
-                    course_par: resJson.course_par,
-                    front_score: resJson.front_score,
-                    back_score: resJson.back_score,
-                    notes: resJson.notes,
-                }))
-            .catch(error => this.setState({ error }))
-    }
+        GameApiService.getUserStats()
+        .then(resJson =>
+            this.setState({
+                id: resJson.id,
+                course_name: resJson.course_name,
+                date: resJson.date,
+                course_par: resJson.course_par,
+                front_score: resJson.front_score,
+                back_score: resJson.back_score,
+            }))
+        .catch(error => this.setState({ error }))
+    }*/
 
     render() {
         const contextValue = {

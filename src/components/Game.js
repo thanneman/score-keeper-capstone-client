@@ -4,7 +4,7 @@ import GameApiService from '../services/game-api-service'
 import moment from 'moment'
 //import { Link } from 'react-router-dom'
 
-export default class NavBar extends Component {
+export default class Game extends Component {
     static contextType = GameContext;
     state = {
         games: []
@@ -44,6 +44,7 @@ export default class NavBar extends Component {
                     </div>
                     <div className="game-card-info">
                         <p><span className="detail-label">Game Date: </span>{moment(game.date).format("MMMM D, YYYY")}</p>
+                        <p><span className="detail-label">Game Time: </span>{moment(game.date).format("h:mm A")}</p>
                         <p><span className="detail-label">Course Par: </span>{game.course_par}</p>
                         <p><span className="detail-label">Your Score: </span>{addScores(game.front_score, game.back_score)}</p>
                         <p><span className="detail-label">Notes: </span>{game.notes}</p>

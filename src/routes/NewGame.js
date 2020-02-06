@@ -5,7 +5,7 @@ import Footer from '../components/Footer'
 import AddGame from '../components/AddGame'
 
 
-export default class Dashboard extends Component {
+export default class NewGame extends Component {
 
 
     render() {

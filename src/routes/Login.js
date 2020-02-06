@@ -96,11 +96,9 @@ export default class Login extends Component {
                             <label htmlFor="password">Password</label>
                             <input type='password' name='password' id='password' onChange={e => this.updatePassword(e.target.value)} />
                         </div>
-                        <div className='error'>
-                            <p>
+                        <div>
                                 {this.state.email.touched && (<ValidationError message={this.validateEmail()} />)}
                                 {this.state.password.touched && (<ValidationError message={this.validatePassword()} />)}
-                            </p>
                         </div>
                         <button type='submit'>Login</button>
                     </form>

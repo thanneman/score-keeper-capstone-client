@@ -3,7 +3,7 @@ import GameApiService from '../services/game-api-service'
 import { Link } from 'react-router-dom'
 
 
-export default class extends Component {
+export default class AddGame extends Component {
     static defaultProps = {
         onAddGame: () => {},
         onSetError: () => {},
@@ -18,7 +18,6 @@ export default class extends Component {
             back_score: e.target.back_score.value,
             notes: "I really want this to work"
         }
-        console.log(newGame)
         GameApiService.postUserGame(newGame.id, newGame.course_name, newGame.date, newGame.course_par, newGame.front_score, newGame.back_score, newGame.notes)
             .then(() => {
                 window.location = '/dashboard'

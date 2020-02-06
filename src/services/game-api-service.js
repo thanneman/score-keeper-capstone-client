@@ -131,6 +131,19 @@ const GameApiService = {
         console.error(error)
       })
   },
+  getUserStats() {
+    return fetch(`${config.API_ENDPOINT}/users/${TokenService.getUserId('userId')}/stats`, {
+      method: 'GET',
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  }
 }
 
 export default GameApiService
