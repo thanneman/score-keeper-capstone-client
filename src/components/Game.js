@@ -3,6 +3,8 @@ import ValidationError from './validation-error'
 import GameContext from '../GameContext'
 import GameApiService from '../services/game-api-service'
 import moment from 'moment'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 
 export default class Game extends Component {
@@ -59,7 +61,7 @@ export default class Game extends Component {
                         <p><span className="detail-label">Your Score: </span>{addScores(game.front_score, game.back_score)}</p>
                         <p><span className="detail-label">Notes: </span>{game.notes}</p>
                     </div>
-                    <button id={game.id} type='submit' onClick={this.handleDelete}>Delete</button>
+                    <button id={game.id} type='submit' onClick={this.handleDelete}>Delete <FontAwesomeIcon icon={faTrashAlt} size="lg" /></button>
                 </div>
                 ))}
             </>

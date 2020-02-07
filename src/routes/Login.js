@@ -50,26 +50,24 @@ export default class Login extends Component {
                     <div className="login-logo">
                         <img id="login-logo" src={logo} alt="DiscScore Logo" />
                     </div>
-                    <h3>Keep track and score your disc golf games, locations, and any notes about a course. </h3>
+                    <h2>Keep track and score your disc golf games, locations, and any notes about a course. </h2>
                 </header>
                 <div className="login">
                     <h3>Login</h3>
                     <form className='signup-form' onSubmit={this.handleSubmitJwtAuth}>
                         <div>
-                            <label htmlFor="email">Email</label>
-                            <input type='text' name='email' id='email' />
+                            <input type='text' name='email' id='email' placeholder='Email'/>
                         </div>
                         <div>
-                            <label htmlFor="password">Password</label>
-                            <input type='password' name='password' id='password' />
-                        </div>
-                        <div>
-                                {this.state.error && (<ValidationError message={this.state.error} />)}
+                            <input type='password' name='password' id='password' placeholder='Password'/>
                         </div>
                         <button type='submit'>Login</button>
                     </form>
                     <div>
                         <p>Don't have an account? Sign up <Link to="/signup">here</Link></p>
+                    </div>
+                    <div>
+                        {this.state.error && (<ValidationError message={this.state.error} />)}
                     </div>
                 </div>
                 <div className="demo">

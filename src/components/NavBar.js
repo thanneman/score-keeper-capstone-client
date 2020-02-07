@@ -18,8 +18,8 @@ export default class NavBar extends Component {
             <nav role="navigation">
                 <div className="logo"><NavLink to="/dashboard"><img id="nav-logo" src={logo} alt="DiscScore Logo" /></NavLink></div>
                 <ul>
-                    <li><NavLink to="/newgame"><FontAwesomeIcon icon={faPlusCircle} size="lg"></FontAwesomeIcon> New Game</NavLink></li>
-                    <li><NavLink to="/" onClick={this.handleLogout}><FontAwesomeIcon icon={faSignOutAlt} size="lg"></FontAwesomeIcon> Logout</NavLink></li>
+                    <li><NavLink to="/newgame"><FontAwesomeIcon icon={faPlusCircle} size="lg" /> New Game</NavLink></li>
+                    <li><NavLink to="/" onClick={this.handleLogout}><FontAwesomeIcon icon={faSignOutAlt} size="lg" /> Logout</NavLink></li>
                 </ul>
             </nav>
         )

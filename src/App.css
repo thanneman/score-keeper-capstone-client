@@ -6,7 +6,7 @@ body {
   font-family: 'proxima-nova', sans-serif;
   font-weight: 400;
   font-size: 20px;
-  color: #444;
+  color: #22252C;
   text-align: center;
   line-height: 1.5;
   background: linear-gradient(-45deg, #23a6d5, #23d5ab);
@@ -26,15 +26,25 @@ body {
   }
 }
 
+a {
+  color: #22252C;
+  text-decoration: none;
+  transition: color .15s
+      ease-in-out;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
 nav {
   padding: 12px 10% 8px 10%;
-  background-color: #ffffff;
   text-align: left;
 }
 
 nav .logo {
   display: inline-block;
-  width: 150px;
+  width: 170px;
 }
 
 nav .logo img {
@@ -52,7 +62,7 @@ nav ul {
 nav li {
   display: inline-block;
   margin-left: 20px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
   text-transform: uppercase;
   font-family: 'proxima-nova', sans-serif;
@@ -71,6 +81,7 @@ section {
 
 footer {
   padding: 1% 0;
+  color: #ffffff;
 }
 
 p {
@@ -92,12 +103,7 @@ p + p {
 }
 
 .login {
-  width: 500px;
-  min-height: 300px;
   margin: 0px auto 20px auto;
-  padding: 10px;
-  background-color: #dddddd;
-  border-radius: 10px;
 }
 
 .login-logo {
@@ -109,14 +115,72 @@ p + p {
   width: 100%;
 }
 
+.login h3 {
+  margin: 10px auto;
+}
+
+.signup-form input {
+  display: block;
+  appearance: none;
+  outline: 0;
+  border: 1px solid #ffffff;
+  background-color: #ffffff;
+  width: 300px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  transition-duration: 0.25s;
+  font-weight: 300;
+}
+
+.signup-form input:hover {
+  background-color: #ffffff;
+}
+
+.signup-form input:focus {
+  background-color: #ffffff;
+  width: 300px;
+  color: #000000;
+}
+
+.signup-form button {
+  background-color: #ffffff;
+  padding: 10px 15px;
+  color: #53e3a6;
+  border-radius: 3px;
+  width: 300px;
+  cursor: pointer;
+  font-size: 18px;
+  transition-duration: 0.25;
+  margin-bottom: 10px;
+}
+
+.signup-form button:hover {
+  background-color: rgb(217, 224, 230);
+}
+
 .error {
-  min-height: 20px;
-  font-size: 12px;
-  color: red;
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 10px;
+  font-size: 14px;
+  background-color: lightpink;
+  border-radius: 3px;
+  color: darkred;
+}
+
+.demo p {
+  font-size: 18px;
+  color: #ffffff;
+  margin: 0 auto;
+  font-weight: 400;
 }
 
 .no-games {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   margin-top: 200px;
   min-height: 60vh;
@@ -124,7 +188,7 @@ p + p {
 
 .game-list {
   width: 90%;
-  min-height: 60vh;
+  min-height: 80vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -135,19 +199,21 @@ p + p {
 .game-card {
   display: inline-block;
   width: 45%;
-  height: 300px;
-  overflow: hidden;
+  height: 350px;
+  overflow: scroll;
   margin: 2%;
-  border: 1px solid #bbb;
-  border-radius: 10px;
+  color: #444444;
+  background-color: #ededed;
+  border-radius: 8px;
 }
 
 .game-card-title {
-  width: 100%;
-  background-color: #bbb;
+  width: 80%;
+  margin: 0 auto;
   padding: 10px;
   border-top-left-radius: inherit;
   border-top-right-radius: inherit;
+  border-bottom: 1px solid #d3d3d3;
 }
 
 .game-card-title h4 {
@@ -162,13 +228,30 @@ p + p {
   padding: 10px;
 }
 
+.game-card button {
+  background-color: #d3d3d3;
+  padding: 10px 15px;
+  color: #444444;
+  border-radius: 5px;
+  width: 250px;
+  cursor: pointer;
+  font-size: 18px;
+  transition-duration: 0.25;
+  margin-top: 10px;
+}
+
+.game-card button:hover {
+  background-color: #b8b8b8;
+}
+
 .game-card-lg {
   display: block;
   width: 50%;
+  color: #444444;
+  background-color: #ededed;
   min-height: 300px;
   margin: 20px auto;
-  border: 1px solid #bbb;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .detail-label {
@@ -177,97 +260,372 @@ p + p {
 .new-game-form {
   text-align: center;
 }
-.new-game-form label, .new-game-form input, .new-game-form button {
+
+
+.new-game-form input, .new-game-form textarea {
   display: block;
-  margin: 5px auto;
-  width: 30%;
+  appearance: none;
+  outline: 0;
+  border: 1px solid #d3d3d3;
+  background-color: #ffffff;
+  width: 400px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  transition-duration: 0.25s;
+  font-weight: 300;
+}
+
+.new-game-form input:hover {
+  background-color: #ffffff;
+}
+
+.new-game-form input:focus {
+  background-color: #ffffff;
+  width: 300px;
+  color: #000000;
+}
+
+.game-card-info button, .game-card-info button a {
+  background-color: #d3d3d3;
+  padding: 10px 15px;
+  color: #444444 !important;
+  border-radius: 5px;
+  width: 250px;
+  cursor: pointer;
+  font-size: 18px;
+  transition-duration: 0.25;
+  margin-top: 10px;
+}
+
+.game-card-info button:hover {
+  background-color: #b8b8b8;
 }
 
 
 
 @media only screen and (max-width: 320px) {
-  .login {
-    width: 90%;
+  .login-container {
+    width: 95%;
+    margin: 10px auto;
+  }
+  
+  .login-logo {
+    width: 70%;
+  }
+
+  header h2 {
+    font-size: 20px;
+    margin: 5px auto;
+  }
+  
+  .login h3 {
+    font-size: 18px;
+  }
+
+  .login p {
+    font-size: 15px;
+  }
+  
+  .signup-form input {
+    width: 100%;
+  }
+  
+  .signup-form input:hover {
+    background-color: #ffffff;
+  }
+  
+  .signup-form input:focus {
+    width: 100%;
+  }
+  
+  .signup-form button {
+    width: 100%;
+  }
+  .error {
+    max-width: 100%;
+  }
+  
+  .demo p {
+    font-size: 16px;
   }
 
   nav {
-    padding: 1% 0;
-    height: 50px;
-  }
-
-  .nav-logo {
-    width: 30%;
-    margin-top: 10px;
+    padding: 10px 5% 8px 5%;
   }
   
-  .nav-logo {
-    width: 30%;
+  nav .logo {
+    width: 100px;
+  }
+  
+  nav ul {
+    right: 5%;
+    margin-top: -7px;
+  }
+  
+  nav li {
+    margin-left: 10px;
+    font-size: 11px;
   }
 
   .game-list {
     width: 95%;
   }
 
-  .game-card {
-    display: inline-block;
-    width: 100%;
-    height: 300px;
+  .no-games {
+    font-size: 20px;
+    margin-top: 80px;
   }
 
+  .game-card {
+    width: 100%;
+    min-height: 250px;
+    overflow: scroll;
+    margin: 5px auto;
+  }
+  
+  .game-card-title {
+    width: 80%;
+  }
+  
+  .game-card-title h4 {
+    font-size: 16px;
+  }
+  
+  .game-card-info p {
+    font-size: 15px;
+  }
+  
+  .game-card-info {
+    padding: 12px;
+  }
+  
+  .game-card button {
+    width: 80%;
+  }
+  
   .game-card-lg {
     width: 100%;
+    margin: 5px auto;
   }
 
-  .new-game-form label, .new-game-form input, .new-game-form button {
-    width: 70%;
+  .error {
+    max-width: 80%;
+    font-size: 12px;
+  }
+
+  .detail-label {
+    font-weight: bold;
+  }
+  .new-game-form {
+    text-align: center;
+  }
+  
+  .new-game-form input, .new-game-form textarea, .new-game-form label {
+    width: 80%;
+    font-size: 15px;
+  }
+  
+  .new-game-form input:focus {
+    width: 80%;
+  }
+  
+  .game-card-info button, .game-card-info button a {
+    width: 80%;
+    font-size: 15px;
+  }
+
+  footer {
+    font-size: 12px;
   }
 }
 
 @media only screen and (min-width: 321px) and (max-width: 550px) {
-  .login {
-    width: 90%;
+  .login-container {
+    width: 95%;
+    margin: 10px auto;
+  }
+  
+  .login-logo {
+    width: 70%;
+  }
+
+  header h2 {
+    font-size: 22px;
+    margin: 5px auto;
+  }
+  
+  .login h3 {
+    font-size: 18px;
+  }
+
+  .login p {
+    font-size: 18px;
+  }
+  
+  .signup-form input {
+    width: 100%;
+  }
+  
+  .signup-form input:hover {
+    background-color: #ffffff;
+  }
+  
+  .signup-form input:focus {
+    width: 100%;
+  }
+  
+  .signup-form button {
+    width: 100%;
+  }
+
+  .error {
+    max-width: 100%;
+  }
+  
+  .demo p {
+    font-size: 18px;
   }
 
   nav {
-    padding: 1% 0;
-    height: 50px;
+    padding: 10px 5% 8px 5%;
+  }
+  
+  nav .logo {
+    width: 110px;
+  }
+  
+  nav ul {
+    right: 5%;
+    margin-top: -5px;
+  }
+  
+  nav li {
+    margin-left: 10px;
+    font-size: 13px;
   }
 
-  .nav-logo {
-    width: 30%;
-    margin-top: 10px;
+  .no-games {
+    font-size: 25px;
+    margin-top: 100px;
   }
-
+  
   .game-list {
     width: 95%;
   }
-
+  
   .game-card {
-    display: inline-block;
     width: 100%;
-    min-height: 300px;
+    min-height: 250px;
+    overflow: scroll;
+    margin: 5px auto;
   }
-
+  
+  .game-card-title {
+    width: 80%;
+  }
+  
+  .game-card-title h4 {
+    font-size: 18px;
+  }
+  
+  .game-card-info p {
+    font-size: 17px;
+  }
+  
+  .game-card-info {
+    padding: 12px;
+  }
+  
+  .game-card button {
+    width: 80%;
+  }
+  
   .game-card-lg {
     width: 100%;
+    margin: 5px auto;
+  }
+  
+  .new-game-form input, .new-game-form textarea, .new-game-form label {
+    width: 80%;
+    font-size: 15px;
+  }
+  
+  .new-game-form input:focus {
+    width: 80%;
+  }
+  
+  .game-card-info button, .game-card-info button a {
+    width: 80%;
+    font-size: 15px;
   }
 
-  .new-game-form label, .new-game-form input, .new-game-form button {
-    width: 70%;
+  footer {
+    font-size: 18px;
   }
 }
 
 @media only screen and (min-width: 551px) and (max-width: 900px) {
-
-
-  nav {
-    padding: 1% 0;
-    height: 50px;
+  .login-container {
+    width: 65%;
+    margin: 10px auto;
+  }
+  
+  .login-logo {
+    width: 70%;
   }
 
-  .nav-logo {
-    width: 20%;
-    margin-top: 0px;
+  header h2 {
+    font-size: 22px;
+    margin: 5px auto;
+  }
+  
+  .login h3 {
+    font-size: 18px;
+  }
+
+  .login p {
+    font-size: 18px;
+  }
+  
+  .signup-form input {
+    width: 100%;
+  }
+  
+  .signup-form input:hover {
+    background-color: #ffffff;
+  }
+  
+  .signup-form input:focus {
+    width: 100%;
+  }
+  
+  .signup-form button {
+    width: 100%;
+  }
+
+  .error {
+    max-width: 80%;
+  }
+  
+  .demo p {
+    font-size: 18px;
+  }
+
+  nav {
+    padding: 10px 5% 8px 5%;
+  }
+  
+  nav ul {
+    right: 5%;
+    margin-top: 5px;
+  }
+  
+  nav li {
+    margin-left: 10px;
   }
 
   .game-list {
@@ -284,7 +642,17 @@ p + p {
     width: 85%;
   }
 
-  .new-game-form label, .new-game-form input, .new-game-form button {
-    width: 50%;
+  .new-game-form input, .new-game-form textarea, .new-game-form label {
+    width: 80%;
+    font-size: 15px;
+  }
+  
+  .new-game-form input:focus {
+    width: 80%;
+  }
+  
+  .game-card-info button, .game-card-info button a {
+    width: 80%;
+    font-size: 15px;
   }
 }

@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import GameApiService from '../services/game-api-service'
 import ValidationError from './validation-error'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 
 
 export default class AddGame extends Component {
@@ -119,7 +122,7 @@ export default class AddGame extends Component {
 
     render() {
         return(
-            <section className="game-detail">
+            <section className="game-list">
                 <div className="game-card-lg">
                 <div className="game-card-title">
                     <h4>New Game</h4>
@@ -127,11 +130,11 @@ export default class AddGame extends Component {
                 <div className="game-card-info">
                     <form className="new-game-form" onSubmit={this.handleSubmit}>
                         <label>Enter Course Name:</label>
-                        <input type="text" name="course_name" id="course_name" required onChange={e => this.updateCourse(e.target.value)} />
+                        <input type="text" name="course_name" id="course_name" required placeholder="Shady Acres" onChange={e => this.updateCourse(e.target.value)} />
                         {this.state.course_name.touched && (<ValidationError message={this.validateCourse()} />)}
 
                         <label>Course Par:</label>
-                        <input type="number" name="course_par" id="course_par" required onChange={e => this.updatePar(e.target.value)} />
+                        <input type="number" name="course_par" id="course_par" required placeholder="72" onChange={e => this.updatePar(e.target.value)} />
                         {this.state.course_par.touched && (<ValidationError message={this.validatePar()} />)}
 
                         <label>Enter Front 9 Score:</label>
@@ -143,12 +146,12 @@ export default class AddGame extends Component {
                         {this.state.back_score.touched && (<ValidationError message={this.validateBack()} />)}
 
                         <label>Notes:</label>
-                        <textarea rows="8" cols="50" name="notes" id="notes" placeholder="Watch out for Carl Spackler on hole 3." required onChange={e => this.updateNotes(e.target.value)} />
+                        <textarea rows="6" name="notes" id="notes" placeholder="Watch out for Carl Spackler on hole 3." required onChange={e => this.updateNotes(e.target.value)} />
                         {this.state.notes.touched && (<ValidationError message={this.validateNotes()} />)}
                         {this.state.error && (<ValidationError message={this.state.error} />)}
-                        <button type='submit'>Submit</button>
+                        <button type='submit'>Submit <FontAwesomeIcon icon={faCheckCircle} size="lg" /></button>
                     </form>
-                    <button><Link to="/dashboard">Cancel</Link></button>
+                    <button><Link to="/dashboard">Cancel <FontAwesomeIcon icon={faTimesCircle} size="lg" /></Link></button>
                 </div>
                 </div>
             </section>
