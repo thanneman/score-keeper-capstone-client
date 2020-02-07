@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ValidationError from '../components/validation-error'
 import AuthApiService from '../services/auth-api-service'
+import TokenService from '../services/token-service'
 import { Link } from 'react-router-dom'
 import logo from '../images/logo.png'
 
@@ -43,7 +44,7 @@ export default class Signup extends Component {
     }
 
     handleLoginSuccess = user => {
-        window.location = '/'
+        window.location = '/dashboard'
     }
 
     handleSubmitBasicAuth = ev => {
@@ -58,7 +59,9 @@ export default class Signup extends Component {
                 email.value = ''
                 password.value = ''
                 repeatPassword.value = ''
-                this.handleLoginSuccess()
+                TokenService.saveAuthToken(user.authToken)
+                TokenService.saveUserId(user.userId)
+                window.location = '/dashboard'
             })
             .catch(res => {
                 this.setState({ error: res.error })
@@ -71,6 +74,8 @@ export default class Signup extends Component {
             return 'Email is required';
         } else if (email.length < 5) {
             return 'Email must be at least 5 characters long'
+        }else if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+            return 'Must be a valid email'
         }
     }
 
@@ -114,15 +119,16 @@ export default class Signup extends Component {
                             <input type='password' name='password' id='password' onChange={e => this.updatePassword(e.target.value)} />
                         </div>
                         <div>
-                            <label htmlFor="repeat-password">Password</label>
+                            <label htmlFor="repeat-password">Repeat Password</label>
                             <input type='password' name='repeatPassword' id='repeatPassword' onChange={e => this.updateRepeatPassword(e.target.value)} />
                         </div>
-                        <button type='submit'>Sign up</button>
                         <div>
                             {this.state.email.touched && (<ValidationError message={this.validateEmail()} />)}
                             {this.state.password.touched && (<ValidationError message={this.validatePassword()} />)}
                             {this.state.repeatPassword.touched && (<ValidationError message={this.validateRepeatPassword()} />)}
+                            {this.state.error && (<ValidationError message={this.state.error} />)}
                         </div>
+                        <button type='submit'>Sign up</button>
                     </form>
                     <div>
                         <p>Already have an account? Login <Link to="/">here</Link></p>

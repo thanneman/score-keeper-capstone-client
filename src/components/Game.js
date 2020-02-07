@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
+import ValidationError from './validation-error'
 import GameContext from '../GameContext'
 import GameApiService from '../services/game-api-service'
 import moment from 'moment'
-//import { Link } from 'react-router-dom'
+
 
 export default class Game extends Component {
     static contextType = GameContext;
     state = {
-        games: []
+        loading: true,
+        games: [],
+        error: null,
     }
 
     deleteGame = gameId => {
@@ -25,6 +28,9 @@ export default class Game extends Component {
                 this.setState({
                     games: resJson
                 }))
+                .catch(res => {
+                    this.setState({ error: res.error })
+                })
     }
 
     handleDelete = e => {
@@ -35,8 +41,12 @@ export default class Game extends Component {
     }
 
     render() {
+        if (this.state.games.length === 0) {
+            return <div className="no-games">You haven't entered any games yet. Please enter a new game!</div>
+        }
         return (
             <>
+                {this.state.error && (<ValidationError message={this.state.error} />)}
                 {this.state.games.map(game => (
                 <div className="game-card" key={game.id} id={game.id}>
                     <div className="game-card-title">

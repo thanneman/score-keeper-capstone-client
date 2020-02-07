@@ -2,12 +2,10 @@ import React, { Component } from 'react'
 import ValidationError from '../components/validation-error'
 import TokenService from '../services/token-service'
 import AuthApiService from '../services/auth-api-service'
-import GameContext from '../GameContext'
 import { Link } from 'react-router-dom'
 import logo from '../images/logo.png'
 
 export default class Login extends Component {
-    static contextType = GameContext;
 
     constructor(props) {
         super(props);
@@ -23,17 +21,6 @@ export default class Login extends Component {
         }
     }
 
-    handleLoginSuccess = () => {
-        window.location = '/dashboard'
-    }
-
-    updateEmail(email) {
-        this.setState({ email: { value: email, touched: true } });
-    }
-
-    updatePassword(password) {
-        this.setState({ password: { value: password, touched: true } });
-    }
 
     handleSubmitJwtAuth = ev => {
         ev.preventDefault()
@@ -56,29 +43,9 @@ export default class Login extends Component {
             })
     }
 
-    validateEmail() {
-        const email = this.state.email.value.trim();
-        if (email.length === 0 ) {
-            return 'Email is required';
-        } else if (email.length < 5) {
-            return 'Email must be at least 5 characters long'
-        }
-    }
-
-    validatePassword() {
-        const password = this.state.password.value.trim();
-        if (password.length === 0 ) {
-            return 'Password is required';
-        } else if (password.length < 6 || password.length > 20) {
-            return 'Password must be between 6 and 20 characters long';
-        } else if (!password.match(/(?=.*[a-z])(?=.*[A-Z])[\S]+/)) {
-            return 'Password must contain 1 upper case, lower case, and a number'
-        }
-    }
-
     render() {
         return (
-            <main role="main">
+            <main role="main" className="login-container">
                 <header role="banner">
                     <div className="login-logo">
                         <img id="login-logo" src={logo} alt="DiscScore Logo" />
@@ -90,15 +57,14 @@ export default class Login extends Component {
                     <form className='signup-form' onSubmit={this.handleSubmitJwtAuth}>
                         <div>
                             <label htmlFor="email">Email</label>
-                            <input type='text' name='email' id='email' onChange={e => this.updateEmail(e.target.value)} />
+                            <input type='text' name='email' id='email' />
                         </div>
                         <div>
                             <label htmlFor="password">Password</label>
-                            <input type='password' name='password' id='password' onChange={e => this.updatePassword(e.target.value)} />
+                            <input type='password' name='password' id='password' />
                         </div>
                         <div>
-                                {this.state.email.touched && (<ValidationError message={this.validateEmail()} />)}
-                                {this.state.password.touched && (<ValidationError message={this.validatePassword()} />)}
+                                {this.state.error && (<ValidationError message={this.state.error} />)}
                         </div>
                         <button type='submit'>Login</button>
                     </form>

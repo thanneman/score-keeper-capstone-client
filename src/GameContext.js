@@ -9,6 +9,7 @@ const GameContext = React.createContext({
     front_score: '',
     back_score: '',
     notes: '',
+    error: '',
     addGame: () => {},
     deleteGame: () => {},
     addUser: () => {},

@@ -3,49 +3,74 @@
 }
 
 body {
-  font-family: "Open Sans",
-  sans-serif;
+  font-family: 'proxima-nova', sans-serif;
+  font-weight: 400;
   font-size: 20px;
   color: #444;
   text-align: center;
   line-height: 1.5;
+  background: linear-gradient(-45deg, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 nav {
-  padding: 1% 0;
-  background-color: #aaa;
-  height: 70px;
+  padding: 12px 10% 8px 10%;
+  background-color: #ffffff;
+  text-align: left;
 }
 
-footer {
-  padding: 1% 0;
+nav .logo {
+  display: inline-block;
+  width: 150px;
 }
 
-.nav-header {
-  background-color: #aaa;
-  display: flex;
-  justify-content: space-between;
-  margin: 0px auto;
-  width: 90%;
-  height: 100%;
-}
-
-.nav-logo {
-  width: 15%;
-}
-
-.nav-logo img {
+nav .logo img {
   width: 100%;
 }
 
+nav ul {
+  display: inline-block;
+  list-style: none;
+  position: absolute;
+  right: 10%;
+  margin: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin-left: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: 'proxima-nova', sans-serif;
+}
+
 header {
-  padding: 45px 15px;
+  padding: 15px;
   width: 100%;
 }
 
 section {
   min-height: 50px;
   padding: 15px 15px;
+}
+
+
+footer {
+  padding: 1% 0;
 }
 
 p {
@@ -57,12 +82,22 @@ p + p {
   margin-top: 15px;
 }
 
+.login-container {
+  width: 60%;
+  margin: 50px auto;
+  border-radius: 10px;
+  padding: 20px;
+  font-family: 'proxima-nova', sans-serif;
+  font-weight: 300;
+}
+
 .login {
   width: 500px;
   min-height: 300px;
   margin: 0px auto 20px auto;
   padding: 10px;
-  background-color: #ddd;
+  background-color: #dddddd;
+  border-radius: 10px;
 }
 
 .login-logo {
@@ -80,8 +115,16 @@ p + p {
   color: red;
 }
 
+.no-games {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 200px;
+  min-height: 60vh;
+}
+
 .game-list {
   width: 90%;
+  min-height: 60vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
