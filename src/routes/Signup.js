@@ -61,7 +61,7 @@ export default class Signup extends Component {
                 repeatPassword.value = ''
                 TokenService.saveAuthToken(user.authToken)
                 TokenService.saveUserId(user.userId)
-                window.location = '/dashboard'
+                window.location = '/'
             })
             .catch(res => {
                 this.setState({ error: res.error })
