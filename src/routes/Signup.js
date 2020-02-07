@@ -111,13 +111,13 @@ export default class Signup extends Component {
                     <h3>Sign Up</h3>
                     <form className='signup-form' onSubmit={this.handleSubmitBasicAuth}>
                         <div>
-                            <input type="text" name='email' id='email' placeholder='Email' onChange={e => this.updateEmail(e.target.value)} />
+                            <input type="text" name='email' id='email' placeholder='Email' required onChange={e => this.updateEmail(e.target.value)} />
                         </div>
                         <div>
-                            <input type='password' name='password' id='password' placeholder='Password' onChange={e => this.updatePassword(e.target.value)} />
+                            <input type='password' name='password' id='password' placeholder='Password' required onChange={e => this.updatePassword(e.target.value)} />
                         </div>
                         <div>
-                            <input type='password' name='repeatPassword' id='repeatPassword' placeholder='Repeat Password' onChange={e => this.updateRepeatPassword(e.target.value)} />
+                            <input type='password' name='repeatPassword' id='repeatPassword' placeholder='Repeat Password' required onChange={e => this.updateRepeatPassword(e.target.value)} />
                         </div>
                         <button type='submit'>Sign up</button>
                     </form>
