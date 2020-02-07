@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import ValidationError from './validation-error'
 import GameContext from '../GameContext'
 import GameApiService from '../services/game-api-service'
+import { NavLink } from 'react-router-dom'
 import moment from 'moment'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
 
 export default class Game extends Component {
@@ -44,7 +46,10 @@ export default class Game extends Component {
 
     render() {
         if (this.state.games.length === 0) {
-            return <div className="no-games">You haven't entered any games yet. Please enter a new game!</div>
+            return <div className="no-games">
+                        You haven't entered any games yet. Please enter a new game!
+                        <NavLink className='no-game-btn' to="/newgame"><FontAwesomeIcon icon={faPlusCircle} size="lg" /> Start New Game</NavLink>
+                    </div>
         }
         return (
             <>
