@@ -105,7 +105,7 @@ export default class Signup extends Component {
                     <div className="login-logo">
                         <img id="login-logo" src={logo} alt="DiscScore Logo" />
                     </div>
-                    <h2>Keep track and score your disc golf games, locations, and any notes about a course. </h2>
+                    <h2>Quickly track and score your disc golf games, locations, and any notes. </h2>
                 </header>
                 <div className="login">
                     <h3>Sign Up</h3>

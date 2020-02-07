@@ -151,7 +151,7 @@ export default class AddGame extends Component {
                         {this.state.error && (<ValidationError message={this.state.error} />)}
                         <button type='submit'>Submit <FontAwesomeIcon icon={faCheckCircle} size="lg" /></button>
                     </form>
-                    <button><Link to="/dashboard">Cancel <FontAwesomeIcon icon={faTimesCircle} size="lg" /></Link></button>
+                    <Link className='game-cancel' to="/dashboard"><button>Cancel <FontAwesomeIcon icon={faTimesCircle} size="lg" /></button></Link>
                 </div>
                 </div>
             </section>
