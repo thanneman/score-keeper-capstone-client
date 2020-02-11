@@ -205,7 +205,6 @@ p + p {
   display: inline-block;
   width: 45%;
   height: 350px;
-  overflow: scroll;
   margin: 2%;
   color: #444444;
   background-color: #ededed;
@@ -387,7 +386,6 @@ p + p {
   .game-card {
     width: 100%;
     min-height: 250px;
-    overflow: scroll;
     margin: 5px auto;
   }
   
@@ -524,7 +522,6 @@ p + p {
   .game-card {
     width: 100%;
     min-height: 250px;
-    overflow: scroll;
     margin: 5px auto;
   }
   

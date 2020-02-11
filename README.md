@@ -1,68 +1,168 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# score-keeper-capstone-server
 
-## Available Scripts
+Discscore is an app that allows users to quickly track their disc golf games, scores and locations.
 
-In the project directory, you can run:
+## Working Prototype
+[Sever Repo](https://github.com/thanneman/score-keeper-capstone-server)
 
-### `npm start`
+[React Client Repo](https://github.com/thanneman/score-keeper-capstone-client)
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[Live App](https://discscore.now.sh/)
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## User Stores
+This app has two types of users; visitor and logged-in user
 
-### `npm test`
+#### Landing Page
+* As a visitor
+* I want to understand what the app is and what I can do with it
+* Sign up or log in
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Sign Up
+* As a visitor
+* I want to register to use this app
+* So I can keep score of my disc golf games
 
-### `npm run build`
+#### Start Scoring Games
+* As a logged-in user
+* I want to see how to start a new game card
+* So I can keep track of my games and courses
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Previous Games/Search Result Action
+* As a logged-in user
+* I want to see my previous game card details (course, scores, notes)
+* So I can see a previous game card
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### New Game
+* As a logged-in user
+* I want to start a new game card
+* So I can capture details about my game (course, scores, notes)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Search Error
+* As a logged-in user
+* I want to know if there is an error in my search
+* So I can search for a certain game card(s)
 
-### `npm run eject`
+#### Search Results
+* As a logged-in user
+* I want to look for and click on the item from my search
+* So I can see a previous game card
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Wireframes
+Landing/Login Page | Sign Up Page
+:-------------------------:|:-------------------------:
+![Landing/Login Page](/github-images/wireframes/landing.jpg)  |  ![Sign Up Page](/github-images/wireframes/signup.jpg)
+Dashboard/Search Page | New Game
+![Dashboard](/github-images/wireframes/dashboard.jpg) | ![New Game](/github-images/wireframes/newgame.jpg)
+Previous Game/Search Result Action |
+![Previous Game](/github-images/wireframes/prevgame.jpg) |
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Screenshots
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### **Landing/Login Page**
+#### POST `api/auth/login`
+<img src="/github-images/screenshots/landing.png" alt="Landing Page">
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### **Sign Up Page**
+#### POST `api/users`
+<img src="/github-images/screenshots/signup.png" alt="Sign Up Page">
 
-## Learn More
+### **Dashboard**
+#### GET `api/users/:user_id/games`
+#### DELETE `api/users/:user_id/game/:game_id`
+<img src="/github-images/screenshots/dashboard.png" alt="Dashboard Page">
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### **Add New Game**
+#### POST `api/users/:user_id/games`
+<img src="/github-images/screenshots/newgame.png" alt="Sign Up Page">
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## API Documentation
 
-### Code Splitting
+### Users Endpoints
+`/users/:user_id` endpoints require an `authorization` header with value of `bearer YOUR_AUTH_TOKEN_HERE` which is assigned to the user after signing up for an account.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### POST `api/users`
+Adds a new user to the user database and allows them to use their account to track the data they input. 
 
-### Analyzing the Bundle Size
+### POST `api/auth/login`
+Allows a user in the database to login with the proper credentials. Returns the authToken and userId which allows them access to their information `/users/:user_id` endpoints as below.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### GET `api/users/:user_id/games`
+Allows a logged-in user to access all of their games they have entered by returning an array of the data.
 
-### Making a Progressive Web App
+**Example response**
+```JSON
+[
+    {
+        "id": 24,
+        "user_id": 5,
+        "course_name": "Pebble Beach",
+        "date": "2020-02-07 15:33:49",
+        "course_par": 36,
+        "front_score": 34,
+        "back_score": 32,
+        "notes": "I can’t believe they let disc golfers play here!"
+    }
+]
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+### DELETE `api/users/:user_id/games/:game_id`
+Allows a logged-in user to delete a game using the `game_id` of the corresponding game.
 
-### Advanced Configuration
+A successful `DELETE` responds with `204 No Content`.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### POST `api/users/:user_id/games`
+Allows a logged-in user to track a game with their relevant data.
 
-### Deployment
+**Example request body**
+```JSON
+{
+    "course_name": "Pebble Beach",
+    "date": "2020-02-07 15:33:49",
+    "course_par": 36,
+    "front_score": 34,
+    "back_score": 32,
+    "notes": "I can’t believe they let disc golfers play here!"
+}
+```
+**Example response body**
+```JSON
+{
+    "id": 24,
+    "course_name": "Pebble Beach",
+    "date": "2020-02-07 15:33:49",
+    "course_par": 36,
+    "front_score": 34,
+    "back_score": 32,
+    "notes": "I can’t believe they let disc golfers play here!"
+}
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## Business Objects (database structure)
+* User
+    * user id
+    * username (email)
+    * password (at least 7-20 char and a number)
+    * date created
 
-### `npm run build` fails to minify
+* Game Card
+    * game id
+    * course id
+    * date
+    * user id
+    * front 9 score
+    * back 9 score
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Technology
+* Front-End: HTML5, CSS3, JavaScript, React
+* Back-End: Node.js, Express.js, PostgreSQL, Mocha and Chai for testing
+* Development Enviroment: Heroku
+
+## Responsive
+App is built to be usable on mobile devices, as well as responsive across mobile, tablet, laptop, and desktop screen resolutions.
+
+## Scripts
+Install node modules `npm install`
+
+Run the tests `npm test`
+
+Start the application `npm start`
