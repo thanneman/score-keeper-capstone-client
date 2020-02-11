@@ -1,4 +1,4 @@
-# score-keeper-capstone-server
+# score-keeper-capstone-client
 
 Discscore is an app that allows users to quickly track their disc golf games, scores and locations.
 
