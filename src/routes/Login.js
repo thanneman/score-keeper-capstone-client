@@ -46,14 +46,11 @@ export default class Login extends Component {
             })
     }
 
-
-
     render() {
-
-        // Display loading if the 
+        // Display loader if the request is taking too long
         const { loading } = this.state;
         let errorLoad;
-        if (!loading) {
+        if (loading === true) {
             errorLoad = <LoadingSpinner />;
         } 
         if (this.state.error) {
@@ -70,7 +67,7 @@ export default class Login extends Component {
                     </div>
                     <h2>Quickly track your disc golf games, scores, and locations.</h2>
                     <p>Record data about disc golf games to refenece at a later date.</p>
-                    <p>Learn more about your games and where you play.</p>
+                    <p>Login or <Link to="/signup">sign up</Link> to get started.</p>
                 </header>
                 <div className="login">
                     <h3>Login</h3>
