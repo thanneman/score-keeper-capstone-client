@@ -13,6 +13,7 @@ export default class Signup extends Component {
         }
     }
 
+    // Create initial state before data input
     constructor(props) {
         super(props);
         this.state = {
@@ -31,6 +32,10 @@ export default class Signup extends Component {
         }
     }
 
+
+
+    // Update state if input updated
+    
     updateEmail(email) {
         this.setState({ email: { value: email, touched: true } });
     }
@@ -47,6 +52,8 @@ export default class Signup extends Component {
         window.location = '/dashboard'
     }
 
+
+    // When submitted check validation and create tokens
     handleSubmitBasicAuth = ev => {
         ev.preventDefault()
         const { email, password, repeatPassword} = ev.target
@@ -61,12 +68,17 @@ export default class Signup extends Component {
                 repeatPassword.value = ''
                 TokenService.saveAuthToken(user.authToken)
                 TokenService.saveUserId(user.userId)
+                alert('User created')
                 window.location = '/'
             })
             .catch(res => {
                 this.setState({ error: res.error })
             })
     }
+
+
+
+    // Validate inputs
 
     validateEmail(fieldValue) {
         const email = this.state.email.value.trim();
@@ -119,7 +131,13 @@ export default class Signup extends Component {
                         <div>
                             <input type='password' name='repeatPassword' id='repeatPassword' placeholder='Repeat Password' required onChange={e => this.updateRepeatPassword(e.target.value)} />
                         </div>
-                        <button type='submit'>Sign up</button>
+                        <button type='submit'
+                            disabled={
+                                this.validateEmail() ||
+                                this.validatePassword() ||
+                                this.validateRepeatPassword()
+                                }
+                        >Sign up</button>
                     </form>
                     <div>
                         {this.state.email.touched && (<ValidationError message={this.validateEmail()} />)}

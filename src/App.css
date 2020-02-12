@@ -166,6 +166,11 @@ p + p {
   background-color: rgb(217, 224, 230);
 }
 
+.signup-form button:disabled {
+  background-color: #cbcbcb;
+  cursor: not-allowed;
+}
+
 .error {
   max-width: 400px;
   margin: 10px auto;
@@ -311,6 +316,10 @@ p + p {
   background-color: #b8b8b8;
 }
 
+.game-card-info button:disabled {
+  background-color: #9d9d9d;
+  cursor: not-allowed;
+}
 
 
 @media only screen and (max-width: 320px) {

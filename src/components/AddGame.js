@@ -81,9 +81,7 @@ export default class AddGame extends Component {
             .then(() => {
                 window.location = '/dashboard'
             })
-            .catch(res => {
-                this.setState({ error: res.error })
-            })
+            .catch(this.state.error)
     }
 
     // Validates that a course name has been entered
@@ -101,6 +99,8 @@ export default class AddGame extends Component {
             return 'Please enter course par';
         } else if (!isNaN(course_par.value)) {
             return 'Must be a number';
+        } else if (course_par.length >= 4) {
+            return 'Must be under 4 digits';
         }
     }
 
@@ -111,6 +111,8 @@ export default class AddGame extends Component {
             return 'Please enter front 9 score';
         } else if (!isNaN(front_score.value)) {
             return 'Must be a number';
+        } else if (front_score.length >= 4) {
+            return 'Must be under 4 digits';
         }
     }
 
@@ -121,6 +123,8 @@ export default class AddGame extends Component {
             return 'Please enter back 9 score';
         } else if (!isNaN(back_score.value)) {
             return 'Must be a number';
+        } else if (back_score.length >= 4) {
+            return 'Must be under 4 digits';
         }
     }
 
@@ -161,7 +165,17 @@ export default class AddGame extends Component {
                         <textarea rows="6" name="notes" id="notes" placeholder="Watch out for Carl Spackler on hole 3." required onChange={e => this.updateNotes(e.target.value)} />
                         {this.state.notes.touched && (<ValidationError message={this.validateNotes()} />)}
                         {this.state.error && (<ValidationError message={this.state.error} />)}
-                        <button type='submit'>Submit <FontAwesomeIcon icon={faCheckCircle} size="lg" /></button>
+                        <button
+                            type='submit'
+                            disabled={
+                                this.validateCourse() ||
+                                this.validatePar() ||
+                                this.validateFront() ||
+                                this.validateBack() ||
+                                this.validateNotes()
+                                }
+                                >
+                                Submit <FontAwesomeIcon icon={faCheckCircle} size="lg" /></button>
                     </form>
                     <Link className='game-cancel' to="/dashboard"><button>Cancel <FontAwesomeIcon icon={faTimesCircle} size="lg" /></button></Link>
                 </div>
