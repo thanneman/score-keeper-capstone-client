@@ -14,6 +14,7 @@ export default class AddGame extends Component {
         }
     }
 
+    // Create initial state before fetching data
     constructor(props) {
         super(props);
         this.state = {
@@ -40,26 +41,32 @@ export default class AddGame extends Component {
         }
     }
 
+    // Update course name state if input updated
     updateCourse(course_name) {
         this.setState({ course_name: { value: course_name, touched: true } });
     }
 
+    // Update course par state if input updated
     updatePar(course_par) {
         this.setState({ course_par: { value: course_par, touched: true } });
     }
 
+    // Update front score state if input updated
     updateFront(front_score) {
         this.setState({ front_score: { value: front_score, touched: true } });
     }
 
+    // Update back score state if input updated
     updateBack(back_score) {
         this.setState({ back_score: { value: back_score, touched: true } });
     }
 
+    // Update notes state if input updated
     updateNotes(notes) {
         this.setState({ notes: { value: notes, touched: true } });
     }
 
+    // Handle submit to POST new game for logged in user
     handleSubmit = e => {
         e.preventDefault()
         this.setState({ error: null })
@@ -79,6 +86,7 @@ export default class AddGame extends Component {
             })
     }
 
+    // Validates that a course name has been entered
     validateCourse() {
         const course_name = this.state.course_name.value.trim();
         if (course_name.length === 0 ) {
@@ -86,6 +94,7 @@ export default class AddGame extends Component {
         }
     }
 
+    // Validates that a course par has been entered and it's a number
     validatePar() {
         const course_par = this.state.course_par.value.trim();
         if (course_par.length === 0 ) {
@@ -95,6 +104,7 @@ export default class AddGame extends Component {
         }
     }
 
+    // Validates that a front score has been entered and it's a number
     validateFront() {
         const front_score = this.state.front_score.value.trim();
         if (front_score.length === 0 ) {
@@ -104,6 +114,7 @@ export default class AddGame extends Component {
         }
     }
 
+    // Validates that a back score has been entered and it's a number
     validateBack() {
         const back_score = this.state.back_score.value.trim();
         if (back_score.length === 0 ) {
@@ -113,6 +124,7 @@ export default class AddGame extends Component {
         }
     }
 
+    // Validates that a note has been entered
     validateNotes() {
         const notes = this.state.notes.value.trim();
         if (notes.length === 0 ) {

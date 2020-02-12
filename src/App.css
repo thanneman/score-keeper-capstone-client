@@ -119,6 +119,11 @@ p + p {
   margin: 10px auto;
 }
 
+.login a {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
 .signup-form input {
   display: block;
   appearance: none;
@@ -142,7 +147,6 @@ p + p {
 
 .signup-form input:focus {
   background-color: #ffffff;
-  width: 300px;
   color: #000000;
 }
 
@@ -288,7 +292,6 @@ p + p {
 
 .new-game-form input:focus {
   background-color: #ffffff;
-  width: 300px;
   color: #000000;
 }
 

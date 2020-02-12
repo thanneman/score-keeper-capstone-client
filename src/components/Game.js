@@ -11,12 +11,14 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 
 export default class Game extends Component {
     static contextType = GameContext;
+    // Set initial state for user before fetch
     state = {
         loading: true,
         games: [],
         error: null,
     }
 
+    // Updates states when a game has been deleted
     deleteGame = gameId => {
         const newGames = this.state.games.filter(rec =>
             rec.id !== gameId
@@ -26,6 +28,7 @@ export default class Game extends Component {
         })
     }
 
+    // Fetches games and updates state when the component mounts
     componentDidMount() {
         GameApiService.getUserGames()
             .then(resJson =>
@@ -37,6 +40,7 @@ export default class Game extends Component {
                 })
     }
 
+    // Handles delete for logged in user
     handleDelete = e => {
         e.preventDefault()
         const { id } = e.target
@@ -45,6 +49,7 @@ export default class Game extends Component {
     }
 
     render() {
+        // If the user has no games display a prompt to add a game
         if (this.state.games.length === 0) {
             return <div className="no-games">
                         You haven't entered any games yet. Please enter a new game!

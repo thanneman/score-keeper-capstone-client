@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ValidationError from '../components/validation-error'
+import LoadingSpinner from '../components/LoadingSpinner'
 import TokenService from '../services/token-service'
 import AuthApiService from '../services/auth-api-service'
 import { Link } from 'react-router-dom'
@@ -18,13 +19,14 @@ export default class Login extends Component {
                 value: '',
                 touched: false,
             },
+            loading: null,
         }
     }
 
-
+    // Check that the users credentials are valid
     handleSubmitJwtAuth = ev => {
         ev.preventDefault()
-        this.setState({ error: null })
+        this.setState({ error: null, loading: true })
         const { email, password } = ev.target
         AuthApiService.postLogin({
             email: email.value,
@@ -33,6 +35,7 @@ export default class Login extends Component {
             .then(res => {
                 email.value = ''
                 password.value = ''
+                this.setState({loading: false })
                 TokenService.saveAuthToken(res.authToken)
                 TokenService.saveUserId(res.userId)
                 window.location = '/dashboard'
@@ -43,7 +46,22 @@ export default class Login extends Component {
             })
     }
 
+
+
     render() {
+
+        // Display loading if the 
+        const { loading } = this.state;
+        let errorLoad;
+        if (!loading) {
+            errorLoad = <LoadingSpinner />;
+        } 
+        if (this.state.error) {
+            errorLoad = <ValidationError message={this.state.error} />;
+        } else {
+            errorLoad = '';
+        }
+
         return (
             <main role="main" className="login-container">
                 <header role="banner">
@@ -51,6 +69,8 @@ export default class Login extends Component {
                         <img id="login-logo" src={logo} alt="DiscScore Logo" />
                     </div>
                     <h2>Quickly track your disc golf games, scores, and locations.</h2>
+                    <p>Record data about disc golf games to refenece at a later date.</p>
+                    <p>Learn more about your games and where you play.</p>
                 </header>
                 <div className="login">
                     <h3>Login</h3>
@@ -63,11 +83,12 @@ export default class Login extends Component {
                         </div>
                         <button type='submit'>Login</button>
                     </form>
+
                     <div>
                         <p>Don't have an account? Sign up <Link to="/signup">here</Link></p>
                     </div>
                     <div>
-                        {this.state.error && (<ValidationError message={this.state.error} />)}
+                        {errorLoad}
                     </div>
                 </div>
                 <div className="demo">

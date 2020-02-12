@@ -2,6 +2,7 @@ import TokenService from '../services/token-service'
 import config from '../config'
 
 const GameApiService = {
+  // GET all games for logged in user
   getUserGames() {
     return fetch(`${config.API_ENDPOINT}/users/${TokenService.getUserId('user_id')}/games`, {
       headers: {
@@ -17,6 +18,7 @@ const GameApiService = {
         console.error(error)
       })
   },
+  // POST new game for logged in user with required data needed
   postUserGame(gameId, course_name, date, course_par, front_score, back_score, notes) {
     return fetch(`${config.API_ENDPOINT}/users/${TokenService.getUserId('userId')}/games`, {
       method: 'POST',
@@ -40,6 +42,7 @@ const GameApiService = {
           : res.json()
       )
   },
+  // DELETE a game
   deleteGame(gameId, cb) {
     fetch(`${config.API_ENDPOINT}/games/${gameId}`, {
       method: 'DELETE',
@@ -48,8 +51,8 @@ const GameApiService = {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
-      
   },
+  // DELETE a game for the logged in user
   deleteUserGame(gameId, cb) {
     fetch(`${config.API_ENDPOINT}/users/${TokenService.getUserId('userId')}/games/${gameId}`, {
       method: 'DELETE',
