@@ -81,16 +81,19 @@ section {
 
 footer {
   padding: 1% 0;
-  color: #ffffff;
 }
 
-p {
-  margin: 0 auto;
-  max-width: 650px;
+.footer p {
+  font-size: 13px;
+  margin: 2px auto;
+  color: #22252C;
 }
 
-p + p {
-  margin-top: 15px;
+.fab {
+  font-size: 15px;
+  margin: 2px auto;
+  color: #22252C;
+  padding: 0px 2px;
 }
 
 .login-container {
@@ -455,6 +458,7 @@ p + p {
   footer {
     font-size: 12px;
   }
+
 }
 
 @media only screen and (min-width: 321px) and (max-width: 550px) {

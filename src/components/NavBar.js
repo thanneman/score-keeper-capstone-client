@@ -3,8 +3,7 @@ import TokenService from '../services/token-service'
 import { NavLink } from 'react-router-dom'
 import logo from '../images/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
 export default class NavBar extends Component {
 

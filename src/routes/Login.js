@@ -5,6 +5,7 @@ import TokenService from '../services/token-service'
 import AuthApiService from '../services/auth-api-service'
 import { Link } from 'react-router-dom'
 import logo from '../images/logo.png'
+import Footer from '../components/Footer'
 
 export default class Login extends Component {
 
@@ -19,7 +20,6 @@ export default class Login extends Component {
                 value: '',
                 touched: false,
             },
-            loading: null,
         }
     }
 
@@ -50,50 +50,53 @@ export default class Login extends Component {
         // Display loader if the request is taking too long
         const { loading } = this.state;
         let errorLoad;
-        if (loading === true) {
-            errorLoad = <LoadingSpinner />;
-        } 
+        let loader;
         if (this.state.error) {
             errorLoad = <ValidationError message={this.state.error} />;
-        } else {
-            errorLoad = '';
+            //this.state.loading = false;
         }
+        else if (loading === true) {
+            loader = <LoadingSpinner />;
+        } 
 
         return (
-            <main role="main" className="login-container">
-                <header role="banner">
-                    <div className="login-logo">
-                        <img id="login-logo" src={logo} alt="DiscScore Logo" />
-                    </div>
-                    <h2>Quickly track your disc golf games, scores, and locations.</h2>
-                    <p>Record data about disc golf games to refenece at a later date.</p>
-                    <p>Login or <Link to="/signup">sign up</Link> to get started.</p>
-                </header>
-                <div className="login">
-                    <h3>Login</h3>
-                    <form className='signup-form' onSubmit={this.handleSubmitJwtAuth}>
+            <>
+                <main role="main" className="login-container">
+                    <header role="banner">
+                        <div className="login-logo">
+                            <img id="login-logo" src={logo} alt="DiscScore Logo" />
+                        </div>
+                        <h2>Quickly track your disc golf games, scores, and locations.</h2>
+                        <p>Record data about disc golf games to refenece at a later date.</p>
+                        <p>Login or <Link to="/signup">sign up</Link> to get started.</p>
+                    </header>
+                    <div className="login">
+                        <h3>Login</h3>
+                        <form className='signup-form' onSubmit={this.handleSubmitJwtAuth}>
+                            <div>
+                                <input type='text' name='email' id='email' placeholder='Email'/>
+                            </div>
+                            <div>
+                                <input type='password' name='password' id='password' placeholder='Password'/>
+                            </div>
+                            <button type='submit'>Login</button>
+                        </form>
+                        {loader}
                         <div>
-                            <input type='text' name='email' id='email' placeholder='Email'/>
+                            <p>Don't have an account? <Link to="/signup">Sign up here</Link></p>
                         </div>
                         <div>
-                            <input type='password' name='password' id='password' placeholder='Password'/>
+                            {errorLoad}
                         </div>
-                        <button type='submit'>Login</button>
-                    </form>
-
-                    <div>
-                        <p>Don't have an account? Sign up <Link to="/signup">here</Link></p>
                     </div>
-                    <div>
-                        {errorLoad}
+                    <div className="demo">
+                        <p>To view a demo use:</p>
+                        <p>Email: demo@test.com</p>
+                        <p>Password: Password1</p>
                     </div>
-                </div>
-                <div className="demo">
-                    <p>To view a demo use:</p>
-                    <p>Email: demo@test.com</p>
-                    <p>Password: Password1</p>
-                </div>
-            </main>
+                </main>
+                <Footer />
+            </>
         )
     }
 

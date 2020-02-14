@@ -133,6 +133,8 @@ export default class AddGame extends Component {
         const notes = this.state.notes.value.trim();
         if (notes.length === 0 ) {
             return 'Please enter a note';
+        } else if (notes.length > 50) {
+            return 'Must be under 50 characters'
         }
     }
 
